@@ -1,0 +1,132 @@
+body{
+  background-color: #f5f5f5;
+}
+.container{
+  display: block;
+  height: 100%;
+  width: 75%;
+}
+
+h2{
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #000;
+}
+
+#header-border{
+  width:60%;
+  padding:1px;
+  background-color: #01798e;
+  margin-bottom: 15px;
+  margin-left: 20%;
+  border: 1px solid black;
+}
+
+.btn-primary {
+	background-color: #01798e;
+	margin-right: 5px;
+	border-radius: 5px 5px 5px 5px;
+  text-align: center;
+}
+.btn-primary:active {
+	color: white;
+	background-color: black;
+}
+.btn-primary:hover {
+	color: black;
+	background-color: white;
+}
+
+.btn-default{
+	background-color: #018ea7;
+	color: white;
+}
+
+.btn-default:hover{
+	color: black;
+	background-color: white;
+}
+
+/* Bootstrap and KO not playing nicely together, 
+	writing my own style for this one */
+
+.client-selector{
+	color: white;
+	background-color:  #01798e;
+}
+
+#helper-display{
+	display: none;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 4px;
+	background-color: #f2dede;
+	font-weight: bold;
+	text-align: center;
+	border: 1px solid transparent;
+	-webkit-animation: fadein 2s; 
+  -moz-animation: fadein 2s; 
+  -ms-animation: fadein 2s; 
+  -o-animation: fadein 2s; 
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+#checkmark-wrapper {
+  display: inline-block;
+  vertical-align: middle;
+  height: inherit;
+  margin-left: 5px;
+  width: 5%;
+}
+
+#checkmark {
+  visibility: hidden;
+    vertical-align: middle;
+
+  stroke: #90d891;
+  stroke-dashoffset: 745.74853515625;
+  stroke-dasharray: 745.74853515625;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 745.74853515625;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+#submit-container{
+}

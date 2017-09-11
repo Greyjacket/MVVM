@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Feature Request App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/feature_request.css')}}">
+
+  <script src="{{ url_for('static', filename='js/feature_request.js')}}"></script>
+</head>
+<body>
+{% include "h_nav.html" %}
+<div class="container">
+  <div>
+    <h2><strong>SUBMIT A FEATURE REQUEST</strong></h2>
+    <div id='header-border'></div>
+ </div>
+<form class="form-horizontal"> 
+  <div class="form-group">
+    <label class="control-label col-sm-2" id="title">Feature Title:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="title-input" placeholder="Enter title of feature request." data-bind="value: title" >
+    </div>
+  </div>
+  <div class="form-group">
+  <label class="control-label col-sm-2" id="description">Feature Description:</label>
+      <div class="col-sm-10">
+  		<textarea class="form-control" rows="5" id="feature-description" data-bind="value: description"></textarea>
+  	  </div>
+  </div>
+<div class="form-group">   
+	<label class="control-label col-sm-2" id="client">Client:</label>
+  <div class="col-sm-10">     
+    <select class="form-control client-selector" id = "client-selector" data-bind="options: clients, value: selectedClient, optionsCaption: 'Select a Client'"></select>
+  </div> 
+</div>
+<div class="form-group">
+  <label class="control-label col-sm-2">Priority:</label>
+	<div class="col-sm-10">
+    <select class="form-control" data-bind="options: priorityList, value: selectedPriority"></select>
+  </div>
+</div>
+<div class="form-group row">
+  <label class="control-label col-sm-2" id="date">Due Date:</label>
+  <div class="col-sm-10">
+    <input class="form-control" id="date-input" type="date" defaultValue ="yyyy-mm-dd" data-bind="value: date">
+  </div>
+</div>
+	<div class="form-group">
+	  <label class="control-label col-sm-2" id="product_area">Product Area:</label>
+		<div class="col-sm-10">
+		  <div class="btn-group" id = "product_area_input" data-toggle="buttons">
+      		<label class="btn btn-primary">
+        	  <input type="radio" name="options" name = 'areas' value="policies" data-bind="bsChecked: productArea"/> Policies
+      		</label>
+      		<label class="btn btn-primary">
+        	  <input type="radio" name="options" name = 'areas' value="billing" data-bind="bsChecked: productArea"/> Billing
+      		</label>
+      		<label class="btn btn-primary">
+        	  <input type="radio" name="options" name = 'areas' value="claims" data-bind="bsChecked: productArea"/> Claims
+      		</label>
+      		<label class="btn btn-primary">
+        	  <input type="radio" name="options" name = 'areas' value="reports" data-bind="bsChecked: productArea"/> Reports
+      		</label>
+		  </div>
+	  </div>
+	</div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-6 col-sm-10" id= 'submit-container'>
+      <button data-bind="click: sendJSON" class="btn btn-default">Submit</button> 
+      <div id= "checkmark-wrapper">
+        <svg version="1.1" id="checkmark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 98.5 98.5" enable-background="new 0 0 98.5 98.5" xml:space="preserve">
+        <path class="checkmark" fill="none" stroke-width="8" stroke-miterlimit="10" d="M81.7,17.8C73.5,9.3,62,4,49.2,4
+        C24.3,4,4,24.3,4,49.2s20.3,45.2,45.2,45.2s45.2-20.3,45.2-45.2c0-8.6-2.4-16.6-6.5-23.4l0,0L45.6,68.2L24.7,47.3"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</form>
+<div class="bg-danger" id="helper-display"></div>
+</div>
+</body>
+</html>
