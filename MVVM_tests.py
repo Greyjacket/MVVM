@@ -3,7 +3,6 @@ import MVVM
 import unittest
 import tempfile
 import datetime
-from flask import jsonify
 import json 
 
 class MVVMTestCase(unittest.TestCase):

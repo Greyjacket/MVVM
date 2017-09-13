@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request, Response, jsonify, g
 from flask_sqlalchemy import SQLAlchemy
-import sqlite3
+from sqlalchemy.exc import IntegrityError
 from models import FeatureRequest, Client, Area
 from shared_db import db
 import datetime
+import sqlite3
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////usr/src/app/portfolio/database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.app = app
 db.init_app(app)
@@ -49,8 +50,9 @@ def submit_feature_request(name=None):
 
 @app.route('/feature-request', methods=['GET', 'POST'])
 def handle_request():
+
     if request.method == 'POST':
-        result = request.get_json()
+        result = request.get_json()        
         try:
             title = result['title'] 
             description = result['description']
@@ -61,17 +63,30 @@ def handle_request():
         except KeyError, e:
             return bad_request(str(e))
 
+        #extract the priority number from the response
+        priority = int(priority[0])
+
+        # convert the received date into a datetime object
         due = datetime.datetime.strptime(due, '%Y-%m-%d')
 
-        fq = FeatureRequest(title, description, priority, due, client, productArea)
-        db.session.add(fq)
-        db.session.commit()
-        # return render_template('result.html', result=result)
+        # get client + area object for foreign key id
+        client_obj = Client.query.filter_by(name=client).first()
+        area_obj = Area.query.filter_by(name=productArea).first()
+        
+        # check for any duplicate titles (titles are unique)
+        try:
+            fq = FeatureRequest(title, description, priority, due, client_obj.id, area_obj.id)
+            db.session.add(fq)
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
+            return bad_request('duplicate')       
+
+        return "OK"
 
 def bad_request(message):
     response = jsonify({'error': message})
     response.status_code = 400
     return response
-
 
 

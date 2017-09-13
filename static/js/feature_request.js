@@ -26,14 +26,19 @@ $(document).ready(function(){
               $("#client-selector").css({"border-color": "red", "border-style": "solid"})
               var errorHelper = "Please select a client. All fields are required."
               break;
-            case '\'date\'':
-              $("#date").css({"color": "red"})
-              $("#date-input").css({"border-color": "red", "border-style": "solid"})
+            case '\'due\'':
+              $("#due").css({"color": "red"})
+              $("#due-input").css({"border-color": "red", "border-style": "solid"})
               var errorHelper = "Please provide a due date for the feature request. All fields are required."
               break;
             case '\'productArea\'':
               $("#product_area").css({"color": "red"})
               var errorHelper = "Please select a product area for the feature request. All fields are required."
+              break;
+            case 'duplicate':
+              $("#title").css({"color": "red"})
+              $("#title-input").css({"border-color": "red", "border-style": "solid"})
+              var errorHelper = "Another feature request exists with the same title. Please choose a different title."
               break;
           }
           $("#helper-display").html(errorHelper).css({"display" : "block", "background-color":"#f2dede"})
@@ -47,10 +52,12 @@ $(document).ready(function(){
           $("#feature-description").css({"border-color": "#ccc"})
           $("#client").css({"color": "black"})
           $("#client-selector").css({"border-color": "#ccc"})
-          $("#date").css({"color": "black"})
-          $("#date-input").css({"border-color": "#ccc"})
+          $("#due").css({"color": "black"})
+          $("#due-input").css({"border-color": "#ccc"})
           $("#product_area").css({"color": "black"})
           $("#helper-display").html("").css({"display" : "none"})
+          $("#checkmark").css({"visibility" : "none", "animation": "dash 2s ease-out forwards 1"})
+          $("#checkmark-wrapper").css({"display" : "none"})
         }
 
         function featureModel() {
@@ -61,12 +68,12 @@ $(document).ready(function(){
           self.selectedClient = ko.observable()
           self.priorityList = ko.observableArray(['1 (Urgent)', '2 (High)', '3 (Medium)', '4 (Low)'])
           self.selectedPriority = ko.observable('3 (Medium)')
-          self.date = ko.observable()
+          self.due = ko.observable()
           self.productArea = ko.observable()
           self.sendJSON = function() {
             clear()
             $.ajax({
-              url: "/admin",
+              url: "/feature-request",
               type: "post",
               data: ko.toJSON(self),
               contentType: "application/json",
