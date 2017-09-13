@@ -1,5 +1,5 @@
-from MVVM import Client, Area, db 
-
+from models import Client, Area
+from MVVM import db
 
 db.create_all()
 

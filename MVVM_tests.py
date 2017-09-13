@@ -30,8 +30,8 @@ class MVVMTestCase(unittest.TestCase):
         priority = 2
         client = "Client A"
         product_area = 'Billing'
-        date = str(datetime.date.today())
-        data = dict(title = title, description = description, selectedPriority = priority, date=date, selectedClient = client, productArea = product_area)
+        due = str(datetime.date.today())
+        data = dict(title = title, description = description, selectedPriority = priority, due=due, selectedClient = client, productArea = product_area)
         data = json.dumps(data)
         self.create_feature_request(data)
 
