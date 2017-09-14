@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, Response, jsonify, g
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.exc import IntegrityError
 from models import FeatureRequest, Client, Area
+from sqlalchemy.exc import IntegrityError
+from flask_sqlalchemy import SQLAlchemy
 from shared_db import db
 import datetime
 import sqlite3
