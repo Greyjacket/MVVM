@@ -1,13 +1,13 @@
 from flask import Flask, render_template, request, Response, jsonify, g
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.exc import IntegrityError
 from models import FeatureRequest, Client, Area
+from sqlalchemy.exc import IntegrityError
+from flask_sqlalchemy import SQLAlchemy
 from shared_db import db
 import datetime
 import sqlite3
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////usr/src/app/portfolio/database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////usr/src/app/portfolio/MVVM/MVVM/database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.app = app
 db.init_app(app)
@@ -47,12 +47,20 @@ def initdb_command():
     init_db()
     print('Initialized the database.')
 
-@app.route('/')
+@app.route('/MVVM/submit')
 def submit_feature_request(name=None):
     return render_template('feature_request.html', name=name)
 
+@app.route('/MVVM/dashboard')
+def dashboard(name=None):
+    return render_template('dashboard.html', name=name)
+
 @app.route('/feature-request', methods=['GET', 'POST'])
 def handle_request():
+
+    if request.method == 'GET':
+        feature_obj = FeatureRequest.query.first()
+        return prepare_json(feature_obj)
 
     if request.method == 'POST':
         result = request.get_json()        
@@ -92,4 +100,7 @@ def bad_request(message):
     response.status_code = 400
     return response
 
-
+def prepare_json(obj):
+    obj_dict = {'title': obj.title, 'description': obj.description, 'client': obj.client,
+                'priority': obj.priority, 'due': obj.due, 'area': obj.product_area}
+    return jsonify(obj_dict)

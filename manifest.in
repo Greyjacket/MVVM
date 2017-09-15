@@ -1,0 +1,3 @@
+graft MVVM/templates
+graft MVVM/static
+include MVVM/schema.sql
