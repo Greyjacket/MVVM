@@ -15,31 +15,31 @@ $(document).ready(function(){
               $("#title").css({"color": "red"})
               $("#title-input").css({"border-color": "red", "border-style": "solid"})
               var errorHelper = "Please provide a title for the feature request. All fields are required."
-              break;
+              break
             case '\'description\'':
               $("#description").css({"color": "red"})
               $("#feature-description").css({"border-color": "red", "border-style": "solid"})
               var errorHelper = "Please provide a description for the feature request. All fields are required."
-              break;
+              break
             case '\'selectedClient\'':
               $("#client").css({"color": "red"})
               $("#client-selector").css({"border-color": "red", "border-style": "solid"})
               var errorHelper = "Please select a client. All fields are required."
-              break;
+              break
             case '\'due\'':
               $("#due").css({"color": "red"})
               $("#due-input").css({"border-color": "red", "border-style": "solid"})
               var errorHelper = "Please provide a due date for the feature request. All fields are required."
-              break;
+              break
             case '\'productArea\'':
               $("#product_area").css({"color": "red"})
               var errorHelper = "Please select a product area for the feature request. All fields are required."
-              break;
+              break
             case 'duplicate':
               $("#title").css({"color": "red"})
               $("#title-input").css({"border-color": "red", "border-style": "solid"})
               var errorHelper = "Another feature request exists with the same title. Please choose a different title."
-              break;
+              break
           }
           $("#helper-display").html(errorHelper).css({"display" : "block", "background-color":"#f2dede"})
         }
@@ -60,7 +60,7 @@ $(document).ready(function(){
           $("#checkmark-wrapper").css({"display" : "none"})
         }
 
-        function featureModel() {
+        function requestModel() {
           var self = this;
           self.title = ko.observable();
           self.description = ko.observable();
@@ -83,31 +83,31 @@ $(document).ready(function(){
               error:function(jqXHR, textStatus, errorThrown) {
                 handleErrors(jqXHR['responseJSON']['error'])
               }   
-            }); 
-          };
+            })
+          }
         }
-          ko.bindingHandlers.bsChecked = { //from stack overflow, ko and bs don't play nicely together
-            init: function (element, valueAccessor, allBindingsAccessor,
-            viewModel, bindingContext) {
-                var value = valueAccessor();
-                var newValueAccessor = function () {
-                    return {
-                        change: function () {
-                            value(element.value);
-                        }
-                    }
-                };
-                ko.bindingHandlers.event.init(element, newValueAccessor,
-                allBindingsAccessor, viewModel, bindingContext);
-            },
-            update: function (element, valueAccessor, allBindingsAccessor,
-            viewModel, bindingContext) {
-                if ($(element).val() == ko.unwrap(valueAccessor())) {
-                     setTimeout(function () {
-                        $(element).closest('.btn').button('toggle');
-                     }, 1); 
-                }
-            }
-        }
-        ko.applyBindings(new featureModel());
-    });
+        ko.bindingHandlers.bsChecked = { //from stack overflow, ko and bs don't play nicely together
+          init: function (element, valueAccessor, allBindingsAccessor,
+          viewModel, bindingContext) {
+              var value = valueAccessor();
+              var newValueAccessor = function () {
+                  return {
+                      change: function () {
+                          value(element.value)
+                      }
+                  }
+              }
+              ko.bindingHandlers.event.init(element, newValueAccessor,
+              allBindingsAccessor, viewModel, bindingContext)
+          },
+          update: function (element, valueAccessor, allBindingsAccessor,
+          viewModel, bindingContext) {
+              if ($(element).val() == ko.unwrap(valueAccessor())) {
+                   setTimeout(function () {
+                      $(element).closest('.btn').button('toggle')
+                   }, 1)
+              }
+          }
+      }
+      ko.applyBindings(new requestModel())
+    })

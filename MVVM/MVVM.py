@@ -44,12 +44,20 @@ def initdb_command():
     init_db()
     print('Initialized the database.')
 
-@app.route('/')
+@app.route('/MVVM/submit')
 def submit_feature_request(name=None):
     return render_template('feature_request.html', name=name)
 
+@app.route('/MVVM/dashboard')
+def dashboard(name=None):
+    return render_template('dashboard.html', name=name)
+
 @app.route('/feature-request', methods=['GET', 'POST'])
 def handle_request():
+
+    if request.method == 'GET':
+        feature_obj = FeatureRequest.query.first()
+        return prepare_json(feature_obj)
 
     if request.method == 'POST':
         result = request.get_json()        
@@ -89,4 +97,7 @@ def bad_request(message):
     response.status_code = 400
     return response
 
-
+def prepare_json(obj):
+    obj_dict = {'title': obj.title, 'description': obj.description, 'client': obj.client,
+                'priority': obj.priority, 'due': obj.due, 'area': obj.product_area}
+    return jsonify(obj_dict)
