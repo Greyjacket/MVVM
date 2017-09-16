@@ -1,0 +1,28 @@
+.container{
+  display: block;
+  height: 100%;
+  width: 75%;
+}
+
+#feature_request_display{
+  background-color: #f5f5f5;
+  border: 2px solid #01798e;
+  margin-top: 10px;
+}
+
+.col-md-4{
+  background-color: gray;
+  border: 2px solid black;
+  color: ;
+}
+
+.field-label{
+	font-size: 15px;
+	color: #018ea7;
+	font-weight: bold;
+}
+
+.col-md-12{
+	padding: 5px;
+	border-bottom: 1px solid #01798e;
+}

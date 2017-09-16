@@ -7,7 +7,7 @@ import datetime
 import sqlite3
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////usr/src/app/MVVM/MVVM/database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////usr/src/app/portfolio/MVVM/MVVM/database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.app = app
 db.init_app(app)
@@ -101,6 +101,9 @@ def bad_request(message):
     return response
 
 def prepare_json(obj):
-    obj_dict = {'title': obj.title, 'description': obj.description, 'client': obj.client,
-                'priority': obj.priority, 'due': obj.due, 'area': obj.product_area}
+    client_obj = Client.query.filter_by(id=obj.client).first()
+    area_obj = Area.query.filter_by(id=obj.product_area).first()
+    obj_dict = {'title': obj.title, 'description': obj.description, 'client': client_obj.name,
+                'priority': obj.priority, 'due': obj.due, 'productArea': area_obj.name}
     return jsonify(obj_dict)
+

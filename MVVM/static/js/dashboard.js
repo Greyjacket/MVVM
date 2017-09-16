@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    function featureModel(){
+    function feature(){
       var self = this
       self.title = ko.observable()
       self.description = ko.observable()
@@ -12,8 +12,9 @@ $(document).ready(function(){
         self.title(data.title)
         self.description(data.description)
         self.client(data.client)
+        self.priority(data.priority)  
         self.due(data.due)
-        self.productArea(data.product_area)  
+        self.productArea(data.productArea)  
       }
     }
     
@@ -22,7 +23,5 @@ $(document).ready(function(){
 
     $.get("/feature-request", function(data, status){
         app.mapProperties(data)
-    })
-
-    
+    })    
 })

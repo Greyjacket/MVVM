@@ -11,22 +11,30 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/feature_request.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/dashboard.css')}}">
   <script src="{{ url_for('static', filename='js/dashboard.js')}}"></script>
 </head>
 <body>
 {% include "h_nav.html" %}
 <div class="container"> 
-  <div class="row">
-    <div class="col"><p data-bind="text: title"/></div>
-    <div class="col"><p data-bind="text: description"/></div>
-  </div>
-  <div class="row">
-    <div class="col">
+  <div class="container" id="feature_request_display">
+    <div class="row">
+      <div class="col-md-12"><p class="field-label">Title:</p><span data-bind="text: title"></span></div>
     </div>
-    <div class="col">
+    <div class="row">
+      <div class="col-md-12"><p class="field-label">Client:</p><p data-bind="text: client"></p></div>
     </div>
-    <div class="col">
+    <div class="row">
+      <div class="col-md-12"><p class="field-label">Product Area:</p><p data-bind="text: productArea"></p></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12"><p class="field-label">Priority:</p><span data-bind="text: priority"></span></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12"><p class="field-label">Due Date:</p><p data-bind="text: due"></p></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12"><p data-bind="text: description"></p></div>
     </div>
   </div>
 </div>
