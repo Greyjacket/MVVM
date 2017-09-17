@@ -10,12 +10,6 @@
   margin-top: 10px;
 }
 
-.col-md-4{
-  background-color: gray;
-  border: 2px solid black;
-  color: ;
-}
-
 .field-label{
 	font-size: 15px;
 	color: #018ea7;
@@ -25,4 +19,13 @@
 .col-md-12{
 	padding: 5px;
 	border-bottom: 1px solid #01798e;
+}
+
+.pager li a{
+	color: #018ea7;
+}
+
+#sort-selector{
+	display: inline;
+	width: 33%;
 }

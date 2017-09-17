@@ -1,38 +1,53 @@
 $(document).ready(function(){
+    var initialData = [{title: "default", client: "default", description: "default", productArea: "default",
+      priority: "default", "due": "default"} ]
 
     function Feature(data){
+      var self = this
       self.title = ko.observable(data.title)
       self.description = ko.observable(data.description)
       self.client = ko.observable(data.client)
       self.priority = ko.observable(data.priority)
       self.due = ko.observable(data.due)
       self.productArea = ko.observable(data.productArea)
-      
-      self.mapProperties = function(data){
-        self.title(data.title)
-        self.description(data.description)
-        self.client(data.client)
-        self.priority(data.priority)  
-        self.due(data.due)
-        self.productArea(data.productArea)  
-      }
     }
-    
+   
     function FeatureViewModel(){
-      var self = this;
-      self.features = ko.observableArray([]);
-      self.currentFeature = 0
-      self.addFeature = function(data) {
-        console.log(data)
-        self.features.push(new Feature(data))
+      var self = this
+      self.sortingOptions = ko.observableArray(['Most Recent', 'Priority'])
+      self.selectedSort = ko.observable('Most Recent')
+      self.featureRequests = ko.observableArray([])
+      self.currentFeatureIndex = ko.observable(0)
+      
+      self.incrementIndex = function() {
+          var previousCount = self.currentFeatureIndex()
+          self.currentFeatureIndex(previousCount + 1)
+      }
+
+      self.decrementIndex = function() {
+          var previousCount = self.currentFeatureIndex()
+          self.currentFeatureIndex(previousCount - 1)
+      }
+
+      self.currentFeatureRequest = ko.computed(function() {
+        return self.featureRequests()[self.currentFeatureIndex()]
+      })
+      
+      self.addFeatureRequest = function(data) {
+        self.featureRequests.push(data)
+      }
+      
+      self.loadFeatureRequests = function(){
+        $.getJSON("/feature-request", function(data){
+            self.featureRequests.removeAll()
+            self.addFeatureRequest(data)
+          })
       }
     }
 
-    fvm = new FeatureViewModel()
-    ko.applyBindings(fvm)
-
-    $.get("/feature-request", function(data, status){
-      fvm.addFeature(data)
-    })
-
+    $(function(){
+      fvm = new FeatureViewModel()
+      ko.applyBindings(fvm)
+      fvm.loadFeatureRequests()
+    });
 })

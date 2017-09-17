@@ -7,7 +7,7 @@ import datetime
 import sqlite3
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////usr/src/app/MVVM/MVVM/database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////usr/src/app/portfolio/MVVM/MVVM/database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.app = app
 db.init_app(app)
@@ -59,8 +59,9 @@ def dashboard(name=None):
 def handle_request():
 
     if request.method == 'GET':
-        feature_obj = FeatureRequest.query.first()
-        return prepare_json(feature_obj)
+        feature_obj = FeatureRequest.query.all()
+        print feature_obj
+        # return prepare_json(feature_obj)
 
     if request.method == 'POST':
         result = request.get_json()        
