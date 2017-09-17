@@ -1,13 +1,13 @@
 $(document).ready(function(){
 
-    function feature(){
-      var self = this
-      self.title = ko.observable()
-      self.description = ko.observable()
-      self.client = ko.observable()
-      self.priority = ko.observable()
-      self.due = ko.observable()
-      self.productArea = ko.observable()
+    function Feature(data){
+      self.title = ko.observable(data.title)
+      self.description = ko.observable(data.description)
+      self.client = ko.observable(data.client)
+      self.priority = ko.observable(data.priority)
+      self.due = ko.observable(data.due)
+      self.productArea = ko.observable(data.productArea)
+      
       self.mapProperties = function(data){
         self.title(data.title)
         self.description(data.description)
@@ -18,10 +18,21 @@ $(document).ready(function(){
       }
     }
     
-    var app = new featureModel()
-    ko.applyBindings(app)
+    function FeatureViewModel(){
+      var self = this;
+      self.features = ko.observableArray([]);
+      self.currentFeature = 0
+      self.addFeature = function(data) {
+        console.log(data)
+        self.features.push(new Feature(data))
+      }
+    }
+
+    fvm = new FeatureViewModel()
+    ko.applyBindings(fvm)
 
     $.get("/feature-request", function(data, status){
-        app.mapProperties(data)
-    })    
+      fvm.addFeature(data)
+    })
+
 })

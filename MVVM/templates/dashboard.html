@@ -19,7 +19,7 @@
 <div class="container"> 
   <div class="container" id="feature_request_display">
     <div class="row">
-      <div class="col-md-12"><p class="field-label">Title:</p><span data-bind="text: title"></span></div>
+      <div class="col-md-12" data-bind="with: features"><p class="field-label">Title:</p><span data-bind="text: title"></span></div>
     </div>
     <div class="row">
       <div class="col-md-12"><p class="field-label">Client:</p><p data-bind="text: client"></p></div>
