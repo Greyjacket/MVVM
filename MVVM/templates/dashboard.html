@@ -37,15 +37,15 @@
       <div class="col-md-12"><p data-bind="text: description"></p></div>
     </div>
   </div>
-      <div class="row">
-      <ul class="pager">
-        <li><a href="#" data-bind="click: decrementIndex">&larr; Previous</a></li>
-        <li>     
-          <select class="form-control" id="sort-selector" data-bind="options: sortingOptions, value: selectedSort"></select>
-        </li> 
-        <li><a href="#" data-bind="click: incrementIndex">Next &rarr;</a></li>
-      </ul>
-    </div>
+  <div class="row">
+    <ul class="pager">
+      <li><a href="#" data-bind="click: decrementIndex, visible: currentFeatureIndex() > 0">&larr; Previous</a></li>
+      <li>     
+        <select class="form-control" id="sort-selector" data-bind="options: sortingOptions, value: selectedSort, event: {change: loadFeatureRequests}"></select>
+      </li> 
+      <li><a href="#" data-bind="click: incrementIndex, visible: displayNext()">Next &rarr;</a></li>
+    </ul>
+  </div>
 </div>
 
 

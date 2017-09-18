@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from shared_db import db
 import datetime
 import sqlite3
+import json
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////usr/src/app/portfolio/MVVM/MVVM/database.db'
@@ -59,10 +60,14 @@ def dashboard(name=None):
 def handle_request():
 
     if request.method == 'GET':
-        feature_obj = FeatureRequest.query.all()
-        print feature_obj
-        # return prepare_json(feature_obj)
+        
+        sorted = FeatureRequest.query.order_by(FeatureRequest.priority).limit(3).all()
+        json_list = []
+        for item in sorted:
+            json_list.append(prepare_json(item))
 
+        return jsonify(json_list)
+        
     if request.method == 'POST':
         result = request.get_json()        
         try:
@@ -106,5 +111,5 @@ def prepare_json(obj):
     area_obj = Area.query.filter_by(id=obj.product_area).first()
     obj_dict = {'title': obj.title, 'description': obj.description, 'client': client_obj.name,
                 'priority': obj.priority, 'due': obj.due, 'productArea': area_obj.name}
-    return jsonify(obj_dict)
+    return obj_dict
 

@@ -18,7 +18,11 @@ $(document).ready(function(){
       self.selectedSort = ko.observable('Most Recent')
       self.featureRequests = ko.observableArray([])
       self.currentFeatureIndex = ko.observable(0)
-      
+      self.totalRecords = ko.observable(0)
+      self.displayNext = ko.computed(function() {
+        return ((self.currentFeatureIndex() + 1) < self.totalRecords())
+      })
+
       self.incrementIndex = function() {
           var previousCount = self.currentFeatureIndex()
           self.currentFeatureIndex(previousCount + 1)
@@ -38,9 +42,13 @@ $(document).ready(function(){
       }
       
       self.loadFeatureRequests = function(){
-        $.getJSON("/feature-request", function(data){
+        $.getJSON("/feature-request?sort=" + self.selectedSort(),function(data){
             self.featureRequests.removeAll()
-            self.addFeatureRequest(data)
+            self.totalRecords(0)
+            data.forEach(function(featureRequest){
+              self.addFeatureRequest(featureRequest)
+              self.totalRecords(self.totalRecords() + 1)
+            })           
           })
       }
     }
