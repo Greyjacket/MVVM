@@ -37,11 +37,21 @@
       <div class="col-md-12"><p data-bind="text: description"></p></div>
     </div>
   </div>
+  <div class=row>
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary">
+          <input type="radio" value= "Priority" data-bind="checked: selectedSort, click: loadFeatureRequests()"/>Priority
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" value="Most Recent" data-bind="checked: selectedSort"/>Most Recent
+        </label>
+      </div>
+  </div>
   <div class="row">
     <ul class="pager">
       <li><a href="#" data-bind="click: decrementIndex, visible: currentFeatureIndex() > 0">&larr; Previous</a></li>
       <li>     
-        <select class="form-control" id="sort-selector" data-bind="options: sortingOptions, value: selectedSort, event: {change: loadFeatureRequests}"></select>
+        <select class="form-control" id="sort-selector" data-bind="options: clientList, value: selectedClient, event: {change: loadFeatureRequests()}"></select>
       </li> 
       <li><a href="#" data-bind="click: incrementIndex, visible: displayNext()">Next &rarr;</a></li>
     </ul>

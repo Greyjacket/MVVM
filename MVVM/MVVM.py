@@ -8,7 +8,7 @@ import sqlite3
 import json
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////usr/src/app/MVVM/MVVM/database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////usr/src/app/portfolio/MVVM/MVVM/database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.app = app
 db.init_app(app)
@@ -60,9 +60,17 @@ def dashboard(name=None):
 def handle_request():
 
     if request.method == 'GET':
-        print request.args.get('sort')
-        sorted = FeatureRequest.query.order_by(FeatureRequest.priority).limit(20).all()
+
+        sort_method = request.args.get('sort')
+
+        if(sort_method == 'Most Recent'):
+            # sorted = FeatureRequest.query.filter_by(client=1).order_by(FeatureRequest.submit_date).limit(20).all()
+            sorted = FeatureRequest.query.order_by(FeatureRequest.submit_date).limit(20).all()
+        else:
+            sorted = FeatureRequest.query.order_by(FeatureRequest.priority).limit(20).all()
+        
         json_list = []
+        
         for item in sorted:
             json_list.append(prepare_json(item))
 

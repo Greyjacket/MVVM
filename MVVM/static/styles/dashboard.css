@@ -29,3 +29,17 @@
 	display: inline;
 	width: 33%;
 }
+
+.btn-primary{
+	background-color: #01798e;
+	margin-right: 5px;
+	border-radius: 5px 5px 5px 5px;
+  	text-align: center;
+}
+
+.btn-group{
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}

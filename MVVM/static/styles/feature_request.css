@@ -112,8 +112,7 @@ h2{
 
 #checkmark {
   visibility: hidden;
-    vertical-align: middle;
-
+  vertical-align: middle;
   stroke: #90d891;
   stroke-dashoffset: 745.74853515625;
   stroke-dasharray: 745.74853515625;
