@@ -8,14 +8,16 @@ class FeatureRequest(db.Model):
     due = db.Column(db.DateTime)
     client = db.Column(db.Integer, db.ForeignKey('client.id')) 
     product_area = db.Column(db.Integer, db.ForeignKey('area.id'))    
-   
-    def __init__(self, title, description, priority, due, client, product_area):
+    submit_date = db.Column(db.DateTime)
+
+    def __init__(self, title, description, priority, due, client, product_area, submit_date):
         self.title = title
         self.description = description
         self.priority = priority
         self.due = due
         self.client = client
         self.product_area = product_area
+        self.submit_date = submit_date
 
     def __repr__(self):
         return '<Name %r>' % self.title

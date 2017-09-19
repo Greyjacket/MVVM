@@ -8,7 +8,7 @@ import sqlite3
 import json
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////usr/src/app/portfolio/MVVM/MVVM/database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////usr/src/app/MVVM/MVVM/database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.app = app
 db.init_app(app)
@@ -60,8 +60,8 @@ def dashboard(name=None):
 def handle_request():
 
     if request.method == 'GET':
-        
-        sorted = FeatureRequest.query.order_by(FeatureRequest.priority).limit(3).all()
+        print request.args.get('sort')
+        sorted = FeatureRequest.query.order_by(FeatureRequest.priority).limit(20).all()
         json_list = []
         for item in sorted:
             json_list.append(prepare_json(item))
@@ -85,6 +85,8 @@ def handle_request():
 
         # convert the received date into a datetime object
         due = datetime.datetime.strptime(due, '%Y-%m-%d')
+        #get the current date
+        submit_date = datetime.datetime.now()
 
         # get client + area object for foreign key id
         client_obj = Client.query.filter_by(name=client).first()
@@ -92,7 +94,7 @@ def handle_request():
         
         # check for any duplicate titles (titles are unique)
         try:
-            fq = FeatureRequest(title, description, priority, due, client_obj.id, area_obj.id)
+            fq = FeatureRequest(title, description, priority, due, client_obj.id, area_obj.id, submit_date)
             db.session.add(fq)
             db.session.commit()
         except IntegrityError:
