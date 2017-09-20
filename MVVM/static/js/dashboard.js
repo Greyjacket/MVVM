@@ -41,8 +41,6 @@ $(document).ready(function(){
       }
       
       self.loadFeatureRequests = function(){
-                  console.log( self.selectedSort())
-
         $.getJSON("/feature-request?sort=" + self.selectedSort(),function(data){
             self.featureRequests.removeAll()
             self.totalRecords(0)
