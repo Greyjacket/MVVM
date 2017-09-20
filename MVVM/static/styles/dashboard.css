@@ -1,7 +1,7 @@
 .container{
   display: block;
   height: 100%;
-  width: 75%;
+  width: 80%;
 }
 
 #feature_request_display{
@@ -19,13 +19,18 @@
 .col-md-12{
 	padding: 5px;
 	border-bottom: 1px solid #01798e;
+	overflow-y: auto;
+}
+
+#feature-description{
+	height: 20vh;
 }
 
 .pager li a{
 	color: #018ea7;
 }
 
-#sort-selector{
+#client-sort{
 	display: inline;
 	width: 33%;
 }
@@ -41,5 +46,5 @@
   margin-top: 10px;
   display: flex;
   align-items: center;
-  justify-content: center
+  justify-content: center;
 }

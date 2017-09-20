@@ -8,7 +8,7 @@ import sqlite3
 import json
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////usr/src/app/MVVM/MVVM/database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////usr/src/app/portfolio/MVVM/MVVM/database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.app = app
 db.init_app(app)
@@ -57,22 +57,30 @@ def dashboard(name=None):
     return render_template('dashboard.html', name=name)
 
 @app.route('/feature-request', methods=['GET', 'POST'])
-def handle_request():
+def handle_feature_request():
 
     if request.method == 'GET':
 
         sort_method = request.args.get('sort')
-
-        if(sort_method == 'Most Recent'):
-            # sorted = FeatureRequest.query.filter_by(client=1).order_by(FeatureRequest.submit_date).limit(20).all()
+        client_sort = request.args.get('client')
+        print client_sort
+        if(sort_method == 'Most Recent' and client_sort == 'All'):
             sorted = FeatureRequest.query.order_by(FeatureRequest.submit_date).limit(20).all()
-        else:
+        elif(sort_method == 'Priority' and client_sort == 'All'):
             sorted = FeatureRequest.query.order_by(FeatureRequest.priority).limit(20).all()
-        
+        elif(sort_method == 'Most Recent' and client_sort != 'All'):
+            client = Client.query.filter_by(name=client_sort).first()
+            sorted = FeatureRequest.query.filter_by(client=client.id).order_by(FeatureRequest.submit_date).limit(20).all()
+        else:
+            client = Client.query.filter_by(name=client_sort).first()
+            sorted = FeatureRequest.query.filter_by(client=client.id).order_by(FeatureRequest.priority).limit(20).all()
+
         json_list = []
         
         for item in sorted:
             json_list.append(prepare_json(item))
+
+        print sorted
 
         return jsonify(json_list)
         
@@ -110,6 +118,19 @@ def handle_request():
             return bad_request('duplicate')       
 
         return "OK"
+
+@app.route('/clients', methods=['GET', 'POST'])
+def handle_client_request():
+
+    if request.method == 'GET':
+
+        clients = Client.query.all()
+        json_list = []
+
+        for client in clients:
+            json_list.append(client.name)
+        
+        return jsonify(json_list)
 
 def bad_request(message):
     response = jsonify({'error': message})

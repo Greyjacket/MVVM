@@ -34,16 +34,16 @@
       <div class="col-md-12"><p class="field-label">Due Date:</p><p data-bind="text: due"></p></div>
     </div>
     <div class="row">
-      <div class="col-md-12"><p data-bind="text: description"></p></div>
+      <div class="col-md-12" id="feature-description"><p data-bind="text: description"></p></div>
     </div>
   </div>
-  <div class=row>
+  <div class=row>  
       <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-primary" data-bind = >
-          <input type="radio" value= "Priority" data-bind="bsChecked: selectedSort"/>Priority
+        <label class="btn btn-primary">
+          <input type="radio" name = "sort" value= "Priority" data-bind="bsChecked: selectedSort"/>Priority
         </label>
         <label class="btn btn-primary">
-          <input type="radio" value="Most Recent" data-bind="bsChecked: selectedSort"/>Most Recent
+          <input type="radio" name = "sort" value="Most Recent" data-bind="bsChecked: selectedSort"/>Most Recent
         </label>
       </div>
   </div>
@@ -51,7 +51,7 @@
     <ul class="pager">
       <li><a href="#" data-bind="click: decrementIndex, visible: currentFeatureIndex() > 0">&larr; Previous</a></li>
       <li>     
-        <select class="form-control" id="sort-selector" data-bind="options: clientList, value: selectedClient, event: {change: loadFeatureRequests()}"></select>
+        <select class="form-control" id = "client-sort" data-bind="options: clientList, value: selectedClient, optionsCaption: 'Filter by Client', event: {change: loadFeatureRequests}"></select>
       </li> 
       <li><a href="#" data-bind="click: incrementIndex, visible: displayNext()">Next &rarr;</a></li>
     </ul>
