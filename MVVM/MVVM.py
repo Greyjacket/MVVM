@@ -8,7 +8,7 @@ import sqlite3
 import json
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////usr/src/app/portfolio/MVVM/MVVM/database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////usr/src/app/MVVM/MVVM/database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.app = app
 db.init_app(app)
@@ -48,6 +48,10 @@ def initdb_command():
     init_db()
     print('Initialized the database.')
 
+@app.route('/MVVM/overview')
+def overview(name=None):
+    return render_template('overview.html', name=name)
+
 @app.route('/MVVM/submit')
 def submit_feature_request(name=None):
     return render_template('feature_request.html', name=name)
@@ -56,6 +60,10 @@ def submit_feature_request(name=None):
 def dashboard(name=None):
     return render_template('dashboard.html', name=name)
 
+@app.route('/MVVM/clients')
+def clients(name=None):
+    return render_template('clients.html', name=name)
+
 @app.route('/feature-request', methods=['GET', 'POST'])
 def handle_feature_request():
 
@@ -63,7 +71,7 @@ def handle_feature_request():
 
         sort_method = request.args.get('sort')
         client_sort = request.args.get('client')
-        print client_sort
+
         if(sort_method == 'Most Recent' and client_sort == 'All'):
             sorted = FeatureRequest.query.order_by(FeatureRequest.submit_date).limit(20).all()
         elif(sort_method == 'Priority' and client_sort == 'All'):
@@ -79,8 +87,6 @@ def handle_feature_request():
         
         for item in sorted:
             json_list.append(prepare_json(item))
-
-        print sorted
 
         return jsonify(json_list)
         

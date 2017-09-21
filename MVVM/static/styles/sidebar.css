@@ -10,7 +10,7 @@
 #sidebar-wrapper {
   z-index: 1000;
   position: absolute;
-  width: 15%;
+  width: 12.5%;
   height: 100%;
   overflow-y: auto;
   background: #01798e;
@@ -62,27 +62,4 @@
   color: #fff;
   background: none;
   text-shadow: 1px 1px 3px #fff;
-}
-
-/*@media(max-width:768px) {
-  #wrapper {
-    padding-left: 0;
-  }
-  #wrapper.toggled {
-    padding-left: 10%;
-  }
-  #sidebar-wrapper {
-    width: 5%;
-  }
-  #wrapper.toggled #sidebar-wrapper {
-    width: 10%;
-  }
-  #page-content-wrapper {
-    padding: 20px;
-    position: relative;
-  }
-  #wrapper.toggled #page-content-wrapper {
-    position: relative;
-    margin-right: 0;
-  }*/
 }

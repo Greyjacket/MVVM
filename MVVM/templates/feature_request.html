@@ -12,17 +12,16 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/feature_request.css')}}">
-
   <script src="{{ url_for('static', filename='js/feature_request.js')}}"></script>
 </head>
 <body>
-{% include "h_nav.html" %}
+{% include "nav.html" %}
 <div class="container">
   <div>
     <h2><strong>SUBMIT A FEATURE REQUEST</strong></h2>
     <div id='header-border'></div>
  </div>
-<form class="form-horizontal"> 
+<form class="form-horizontal" id="feature_request_form"> 
   <div class="form-group">
     <label class="control-label col-sm-2" id="title">Feature Title:</label>
     <div class="col-sm-10">
@@ -72,6 +71,7 @@
 		  </div>
 	  </div>
 	</div>
+  <div id = 'form-border'></div>
   <div class="form-group"> 
     <div class="col-sm-offset-6 col-sm-10" id= 'submit-container'>
       <button data-bind="click: sendJSON" class="btn btn-default">Submit</button> 
@@ -85,7 +85,7 @@
     </div>
   </div>
 </form>
-<div class="bg-danger" id="helper-display"></div>
+  <div class="bg-danger" id="helper-display">SPACER TEXT</div>
 </div>
 </body>
 </html>

@@ -4,8 +4,8 @@ body{
 .container{
   display: block;
   height: 100%;
-  width: 70%;
-  left: 5px;
+  width: 75%;
+  margin-left: 12.5%;
 }
 
 h2{
@@ -23,6 +23,14 @@ h2{
   margin-bottom: 15px;
   margin-left: 20%;
   border: 1px solid black;
+}
+
+#form-border{
+  padding-top: 1px;
+  background-color: #01798e;
+  opacity: 30%;
+  width: 100%;
+  margin-left:0%;
 }
 
 .btn-primary {
@@ -50,6 +58,12 @@ h2{
 	background-color: white;
 }
 
+#submit-container{
+  display: block;
+  margin-top: 5px;
+  z-index: 5;
+}
+
 /* Bootstrap and KO not playing nicely together, 
 	writing my own style for this one */
 
@@ -59,7 +73,8 @@ h2{
 }
 
 #helper-display{
-	display: none;
+  display: block;
+	visibility: hidden;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	border-radius: 4px;
@@ -105,6 +120,7 @@ h2{
 
 #checkmark-wrapper {
   display: inline-block;
+  visibility: hidden;
   vertical-align: middle;
   height: inherit;
   margin-left: 5px;
