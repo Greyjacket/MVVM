@@ -1,11 +1,22 @@
 body{
   background-color: #f5f5f5;
+  height: 100%;
+  width: 100%;
 }
 .container{
   display: block;
+  padding: 0;
   height: 100%;
+  width: 100%;
+  margin-left: 25%;
+  margin-right: 25%;
+  transform: translate(-12.5%, 0);
+}
+
+#feature-request-form{
   width: 75%;
-  margin-left: 12.5%;
+  margin-left: 25%;
+  transform: translate(-25%, 0);
 }
 
 h2{
@@ -22,15 +33,14 @@ h2{
   background-color: #01798e;
   margin-bottom: 15px;
   margin-left: 20%;
-  border: 1px solid black;
+  opacity: .5;
 }
 
 #form-border{
   padding-top: 1px;
   background-color: #01798e;
-  opacity: 30%;
+  opacity: .25;
   width: 100%;
-  margin-left:0%;
 }
 
 .btn-primary {
@@ -60,8 +70,16 @@ h2{
 
 #submit-container{
   display: block;
-  margin-top: 5px;
-  z-index: 5;
+  padding: 0;
+  margin-top: 15px;
+  margin-left: 50%;
+  -webkit-transform: translate(-50%, 0); 
+  width: auto;
+}
+
+#submit-button{
+  display: block;
+  margin-left: 0;
 }
 
 /* Bootstrap and KO not playing nicely together, 
@@ -73,8 +91,7 @@ h2{
 }
 
 #helper-display{
-  display: block;
-	visibility: hidden;
+  display: none;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	border-radius: 4px;
@@ -119,8 +136,7 @@ h2{
 }
 
 #checkmark-wrapper {
-  display: inline-block;
-  visibility: hidden;
+  display: none;
   vertical-align: middle;
   height: inherit;
   margin-left: 5px;
@@ -128,7 +144,7 @@ h2{
 }
 
 #checkmark {
-  visibility: hidden;
+  display: none;
   vertical-align: middle;
   stroke: #90d891;
   stroke-dashoffset: 745.74853515625;

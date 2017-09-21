@@ -1,13 +1,26 @@
 .container{
   display: block;
   height: 100%;
-  width: 80%;
+  width: 100%;
+  margin-left: 12.5%;
+  padding: 0;
 }
 
-#feature_request_display{
+#main-display{
   background-color: #f5f5f5;
   border: 2px solid #01798e;
-  margin-top: 10px;
+  margin-top: 6.25vh;
+  margin-left: 25%;
+  width: 75%;
+  transform: translate(-25%, 0);
+  position: relative;
+}
+
+#feature-request-display{
+}
+
+.row{
+	margin: 0px;
 }
 
 .field-label{
@@ -17,13 +30,13 @@
 }
 
 .col-md-12{
-	padding: 5px;
+	padding: 2px 0px 2px 5px;
 	border-bottom: 1px solid #01798e;
 	overflow-y: auto;
 }
 
 #feature-description{
-	height: 20vh;
+	height: 15vh;
 }
 
 .pager li a{

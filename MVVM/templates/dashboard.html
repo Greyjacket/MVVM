@@ -17,26 +17,27 @@
 <body>
 {% include "nav.html" %}
 <div class="container"> 
-  <div class="container" id="feature_request_display" data-bind="with: currentFeatureRequest">
-    <div class="row">
-      <div class="col-md-12"><p class="field-label">Title:</p><span data-bind="text: title"></span></div>
+  <div id="main-display">
+    <div id="feature-request-display" data-bind="with: currentFeatureRequest">
+      <div class="row">
+        <div class="col-md-12"><p class="field-label">Title:</p><p data-bind="text: title"></p></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12"><p class="field-label">Client:</p><p data-bind="text: client"></p></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12"><p class="field-label">Product Area:</p><p data-bind="text: productArea"></p></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12"><p class="field-label">Priority:</p><p data-bind="text: priority"></p></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12"><p class="field-label">Due Date:</p><p data-bind="text: due"></p></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12" id="feature-description"><p data-bind="text: description"></p></div>
+      </div>
     </div>
-    <div class="row">
-      <div class="col-md-12"><p class="field-label">Client:</p><p data-bind="text: client"></p></div>
-    </div>
-    <div class="row">
-      <div class="col-md-12"><p class="field-label">Product Area:</p><p data-bind="text: productArea"></p></div>
-    </div>
-    <div class="row">
-      <div class="col-md-12"><p class="field-label">Priority:</p><span data-bind="text: priority"></span></div>
-    </div>
-    <div class="row">
-      <div class="col-md-12"><p class="field-label">Due Date:</p><p data-bind="text: due"></p></div>
-    </div>
-    <div class="row">
-      <div class="col-md-12" id="feature-description"><p data-bind="text: description"></p></div>
-    </div>
-  </div>
   <div class=row>  
       <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-primary">
@@ -56,6 +57,7 @@
       <li><a href="#" data-bind="click: incrementIndex, visible: displayNext()">Next &rarr;</a></li>
     </ul>
   </div>
+</div>
 </div>
 </body>
 </html>

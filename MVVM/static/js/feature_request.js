@@ -3,8 +3,8 @@ $(document).ready(function(){
         //handle a successful request
         function handleSuccess(){
           var successText = "Your feature request has been logged."
-          $("#helper-display").html(successText).css({"visibility" : "visible", "background-color":"#90d891"})
-          $("#checkmark").css({"visibility" : "visible", "animation": "dash 2s ease-out forwards 1"})
+          $("#helper-display").html(successText).css({"display" : "block", "background-color":"#90d891"})
+          $("#checkmark").css({"display" : "inline-block", "animation": "dash 2s ease-out forwards 1"})
           $("#checkmark-wrapper").css({"display" : "inline-block"})
         }
 
@@ -41,7 +41,7 @@ $(document).ready(function(){
               var errorHelper = "Another feature request exists with the same title. Please choose a different title."
               break
           }
-          $("#helper-display").html(errorHelper).css({"visibility" : "visible", "background-color":"#f2dede"})
+          $("#helper-display").html(errorHelper).css({"display" : "block", "background-color":"#f2dede"})
         }
 
         //clear error formatting, if any
@@ -55,9 +55,9 @@ $(document).ready(function(){
           $("#due").css({"color": "black"})
           $("#due-input").css({"border-color": "#ccc"})
           $("#product_area").css({"color": "black"})
-          $("#helper-display").html("").css({"visibility" : "hidden"})
-          $("#checkmark").css({"visibility" : "hidden", "animation": "dash 2s ease-out forwards 1"})
-          $("#checkmark-wrapper").css({"visibility" : "hidden"})
+          $("#helper-display").html("").css({"display" : "none"})
+          $("#checkmark").css({"display" : "none", "animation": "dash 2s ease-out forwards 1"})
+          $("#checkmark-wrapper").css({"display" : "none"})
         }
 
         function requestModel() {
