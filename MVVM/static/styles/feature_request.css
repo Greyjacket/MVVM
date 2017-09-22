@@ -1,8 +1,8 @@
-body{
-  background-color: #f5f5f5;
-  height: 100%;
-  width: 100%;
+body { 
+    background: url(/static/img/hypnotize.png) repeat 0 0;
 }
+
+
 .container{
   display: block;
   padding: 0;
@@ -11,6 +11,8 @@ body{
   margin-left: 25%;
   margin-right: 25%;
   transform: translate(-12.5%, 0);
+    background: url(/static/img/cream_dust.png) repeat 0 0;
+
 }
 
 #feature-request-form{
@@ -41,6 +43,11 @@ h2{
   background-color: #01798e;
   opacity: .25;
   width: 100%;
+}
+
+.col-sm-2{
+  text-align: center;
+  padding: 0px;
 }
 
 .btn-primary {
