@@ -5,6 +5,7 @@
 
 body { 
     background: url(/static/img/hypnotize.png) repeat 0 0;
+    font-family: 'Oranienbaum', serif;
 }
 
 .container{
@@ -15,10 +16,11 @@ body {
   margin-left: 25%;
   margin-right: 25%;
   transform: translate(-12.5%, 0);
-  font-family: 'Oranienbaum', serif;
 }
 
 #feature-request-form{
+  padding: 15px;
+  margin-top: 3vh;
   width: 75%;
   padding: 10px;
   margin-left: 25%;
@@ -28,13 +30,12 @@ body {
 }
 
 #inner-wrapper{
-  padding: 5px;
 }
 
 h2{
   text-align: center;
   font-size: 14px;
-  margin-top: 10px;
+  margin-top: 0px;
   margin-bottom: 5px;
   color: #000;
 }

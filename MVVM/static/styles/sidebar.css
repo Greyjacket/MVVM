@@ -21,6 +21,15 @@
   transition: all 0.5s ease;
 }
 
+img{
+  width: 66%;
+  height: 10vh;
+  margin-left: 50%;
+  margin-top: 3vh;
+  transform: translate(-50%, 0);
+
+}
+
 /* Sidebar Styles */
 
 .sidebar-nav {

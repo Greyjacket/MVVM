@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'oswald';
+    src: url('/static/fonts/Oranienbaum-Regular.ttf');
+}
+
+body { 
+	background: url(/static/img/hypnotize.png) repeat 0 0;
+    font-family: 'Oranienbaum', serif;
+}
+
+.container{
+    display: block;
+    margin-left: 12.5%;
+    padding: 0;
+    background-color: red;
+}
+
+#overview-display{
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	height: 50%;
+	background-color: red;
+	align-items:  center;
+	justify-content: center;
+}
