@@ -1,5 +1,11 @@
+@font-face {
+    font-family: 'oswald';
+    src: url('/static/fonts/Oranienbaum-Regular.ttf');
+}
+
 body { 
 	  background: url(/static/img/hypnotize.png) repeat 0 0;
+    font-family: 'Oranienbaum', serif;
 }
 
 .container{
@@ -29,7 +35,7 @@ h2{
 
 #main-display{
   background-color: #f5f5f5;
-  border: 2px solid #01798e;
+  border: 1px solid #01798e;
   margin-top: 3vh;
   margin-left: 25%;
   width: 75%;
@@ -37,9 +43,6 @@ h2{
   position: relative;
   background: url(/static/img/cream_dust.png) repeat 0 0;
 
-}
-
-#feature-request-display{
 }
 
 .row{
@@ -75,7 +78,7 @@ h2{
 	background-color: #01798e;
 	margin-right: 5px;
 	border-radius: 5px 5px 5px 5px;
-  	text-align: center;
+  text-align: center;
 }
 
 .btn-group{

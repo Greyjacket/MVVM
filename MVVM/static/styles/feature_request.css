@@ -1,7 +1,11 @@
+@font-face {
+    font-family: 'oswald';
+    src: url('/static/fonts/Oranienbaum-Regular.ttf');
+}
+
 body { 
     background: url(/static/img/hypnotize.png) repeat 0 0;
 }
-
 
 .container{
   display: block;
@@ -11,14 +15,20 @@ body {
   margin-left: 25%;
   margin-right: 25%;
   transform: translate(-12.5%, 0);
-    background: url(/static/img/cream_dust.png) repeat 0 0;
-
+  font-family: 'Oranienbaum', serif;
 }
 
 #feature-request-form{
   width: 75%;
+  padding: 10px;
   margin-left: 25%;
   transform: translate(-25%, 0);
+  border: 1px solid #01798e;
+  background: url(/static/img/cream_dust.png) repeat 0 0;
+}
+
+#inner-wrapper{
+  padding: 5px;
 }
 
 h2{
@@ -27,6 +37,10 @@ h2{
   margin-top: 10px;
   margin-bottom: 5px;
   color: #000;
+}
+
+.form-group{
+  width: 100%;
 }
 
 #header-border{
@@ -38,7 +52,7 @@ h2{
   opacity: .5;
 }
 
-#form-border{
+#form-divider{
   padding-top: 1px;
   background-color: #01798e;
   opacity: .25;
@@ -46,7 +60,6 @@ h2{
 }
 
 .col-sm-2{
-  text-align: center;
   padding: 0px;
 }
 
