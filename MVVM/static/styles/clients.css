@@ -1,0 +1,179 @@
+@font-face {
+    font-family: 'oswald';
+    src: url('/static/fonts/Oranienbaum-Regular.ttf');
+}
+
+body { 
+    background: url(/static/img/hypnotize.png) repeat 0 0;
+    font-family: 'Oranienbaum', serif;
+}
+
+.container{
+  display: block;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  margin-left: 25%;
+  margin-right: 25%;
+  transform: translate(-12.5%, 0);
+}
+
+#feature-request-form{
+  padding: 15px;
+  margin-top: 3vh;
+  width: 75%;
+  padding: 10px;
+  margin-left: 25%;
+  transform: translate(-25%, 0);
+  border: 1px solid #01798e;
+  background: url(/static/img/cream_dust.png) repeat 0 0;
+}
+
+h2{
+  text-align: center;
+  font-size: 14px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  color: #000;
+}
+
+.form-group{
+  width: 100%;
+}
+
+#header-border{
+  width:60%;
+  padding:1px;
+  background-color: #01798e;
+  margin-bottom: 15px;
+  margin-left: 20%;
+  opacity: .5;
+}
+
+#form-divider{
+  padding-top: 1px;
+  background-color: #01798e;
+  opacity: .25;
+  width: 100%;
+}
+
+.col-sm-2{
+  padding: 0px;
+}
+
+.btn-primary {
+	background-color: #01798e;
+	margin-right: 5px;
+	border-radius: 5px 5px 5px 5px;
+  text-align: center;
+}
+.btn-primary:active {
+	color: white;
+	background-color: black;
+}
+.btn-primary:hover {
+	color: black;
+	background-color: white;
+}
+
+.btn-default{
+	background-color: #018ea7;
+	color: white;
+}
+
+.btn-default:hover{
+	color: black;
+	background-color: white;
+}
+
+#submit-container{
+  display: block;
+  padding: 0;
+  margin-top: 15px;
+  margin-left: 50%;
+  -webkit-transform: translate(-50%, 0); 
+  width: auto;
+}
+
+#submit-button{
+  display: block;
+  margin-left: 0;
+}
+
+/* Bootstrap and KO not playing nicely together, 
+	writing my own style for this one */
+
+.client-selector{
+	color: white;
+	background-color: #01798e;
+}
+
+#helper-display{
+  display: none;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 4px;
+	background-color: #f2dede;
+	font-weight: bold;
+	text-align: center;
+	border: 1px solid transparent;
+	-webkit-animation: fadein 2s; 
+  -moz-animation: fadein 2s; 
+  -ms-animation: fadein 2s; 
+  -o-animation: fadein 2s; 
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+#checkmark-wrapper {
+  display: none;
+  vertical-align: middle;
+  height: inherit;
+  margin-left: 5px;
+  width: 5%;
+}
+
+#checkmark {
+  display: none;
+  vertical-align: middle;
+  stroke: #90d891;
+  stroke-dashoffset: 745.74853515625;
+  stroke-dasharray: 745.74853515625;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 745.74853515625;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}

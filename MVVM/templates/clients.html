@@ -8,12 +8,55 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/dashboard.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/clients.css')}}">
 </head>
 <body>
 {% include "nav.html" %}
 <div class="container"> 
-TO DO
+  <div id="main-display">
+    <div>
+      <h2><strong>FEATURE REQUESTS</strong></h2>
+      <div id='header-border'></div>
+    </div>
+    <div id="feature-request-display" data-bind="with: currentFeatureRequest">
+      <div class="row">
+        <div class="col-md-12"><p class="field-label">Title:</p><p data-bind="text: title"></p></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12"><p class="field-label">Client:</p><p data-bind="text: client"></p></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12"><p class="field-label">Product Area:</p><p data-bind="text: productArea"></p></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12"><p class="field-label">Priority:</p><p data-bind="text: priority"></p></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12"><p class="field-label">Due Date:</p><p data-bind="text: due"></p></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12" id="feature-description"><p data-bind="text: description"></p></div>
+      </div>
+    </div>
+  <div class=row>  
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary">
+          <input type="radio" name = "sort" value= "Priority" data-bind="bsChecked: selectedSort"/>Priority
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name = "sort" value="Most Recent" data-bind="bsChecked: selectedSort"/>Most Recent
+        </label>
+      </div>
+  </div>
+  <div class="row">
+    <ul class="pager">
+      <li><a href="#" data-bind="click: decrementIndex, visible: currentFeatureIndex() > 0">&larr; Previous</a></li>
+      <li>     
+        <select class="form-control" id = "client-sort" data-bind="options: clientList, value: selectedClient, optionsCaption: 'Filter by Client', event: {change: loadFeatureRequests}"></select>
+      </li> 
+      <li><a href="#" data-bind="click: incrementIndex, visible: displayNext()">Next &rarr;</a></li>
+    </ul>
+  </div>
 </div>
 </body>
 </html>
