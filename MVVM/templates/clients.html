@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Overview</title>
+  <title>Clients</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -9,54 +9,24 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/clients.css')}}">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js'></script>
+  <script src="{{ url_for('static', filename='js/clients.js')}}"></script>
 </head>
 <body>
 {% include "nav.html" %}
 <div class="container"> 
-  <div id="main-display">
-    <div>
-      <h2><strong>FEATURE REQUESTS</strong></h2>
-      <div id='header-border'></div>
-    </div>
-    <div id="feature-request-display" data-bind="with: currentFeatureRequest">
-      <div class="row">
-        <div class="col-md-12"><p class="field-label">Title:</p><p data-bind="text: title"></p></div>
-      </div>
-      <div class="row">
-        <div class="col-md-12"><p class="field-label">Client:</p><p data-bind="text: client"></p></div>
-      </div>
-      <div class="row">
-        <div class="col-md-12"><p class="field-label">Product Area:</p><p data-bind="text: productArea"></p></div>
-      </div>
-      <div class="row">
-        <div class="col-md-12"><p class="field-label">Priority:</p><p data-bind="text: priority"></p></div>
-      </div>
-      <div class="row">
-        <div class="col-md-12"><p class="field-label">Due Date:</p><p data-bind="text: due"></p></div>
-      </div>
-      <div class="row">
-        <div class="col-md-12" id="feature-description"><p data-bind="text: description"></p></div>
-      </div>
-    </div>
-  <div class=row>  
-      <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-primary">
-          <input type="radio" name = "sort" value= "Priority" data-bind="bsChecked: selectedSort"/>Priority
-        </label>
-        <label class="btn btn-primary">
-          <input type="radio" name = "sort" value="Most Recent" data-bind="bsChecked: selectedSort"/>Most Recent
-        </label>
-      </div>
-  </div>
-  <div class="row">
-    <ul class="pager">
-      <li><a href="#" data-bind="click: decrementIndex, visible: currentFeatureIndex() > 0">&larr; Previous</a></li>
-      <li>     
-        <select class="form-control" id = "client-sort" data-bind="options: clientList, value: selectedClient, optionsCaption: 'Filter by Client', event: {change: loadFeatureRequests}"></select>
-      </li> 
-      <li><a href="#" data-bind="click: incrementIndex, visible: displayNext()">Next &rarr;</a></li>
-    </ul>
-  </div>
+    <div id="client-display-list">
+    	<div>
+      		<h2><strong>CLIENT LIST</strong></h2>
+      		<div id='header-border'></div>
+    	</div>
+	    <div class="client-display" data-bind="foreach: clientList">
+	      <div class="row">
+	        <div class="col-md-12"><span class="field-label">Name: </span><span data-bind="text: name"></span></div>
+	      	<div class="col-md-12"><span class="field-label">Description: </span><span data-bind="text: description"></span></div>
+		  </div>
+		</div>
+	</div>
 </div>
 </body>
 </html>

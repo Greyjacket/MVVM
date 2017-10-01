@@ -1,9 +1,9 @@
-@font-face {
+@font-face{
     font-family: 'oswald';
     src: url('/static/fonts/Oranienbaum-Regular.ttf');
 }
 
-body { 
+body{ 
 	background: url(/static/img/hypnotize.png) repeat 0 0;
   font-family: 'Oranienbaum', serif;
 }

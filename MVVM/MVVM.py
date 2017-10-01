@@ -130,11 +130,22 @@ def handle_client_request():
 
     if request.method == 'GET':
 
+        sort_method = request.args.get('sort')
+
         clients = Client.query.all()
         json_list = []
 
-        for client in clients:
-            json_list.append(client.name)
+        # this is for the client sort in the dashboard
+        if sort_method == 'name_only':
+            for client in clients:
+                client_dict = client.name
+                json_list.append(client_dict)         
+
+        # this is for the client menu       
+        else:
+            for client in clients:
+                client_dict = {'name': client.name, 'description': client.description}
+                json_list.append(client_dict)
         
         return jsonify(json_list)
 

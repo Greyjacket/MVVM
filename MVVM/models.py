@@ -25,6 +25,7 @@ class FeatureRequest(db.Model):
 class Client(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True)
+    description = db.Column(db.Text)
     feature_requests = db.relationship('FeatureRequest', backref=db.backref('Client'))
 
     def __init__(self, name):
