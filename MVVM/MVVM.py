@@ -64,6 +64,11 @@ def dashboard(name=None):
 def clients(name=None):
     return render_template('clients.html', name=name)
 
+@app.route('/MVVM/clients/<clientname>')
+def client_detail(clientname):
+    client = Client.query.filter_by(webname=clientname).first_or_404()
+    return render_template('client_detail.html', client=client)
+
 @app.route('/feature-request', methods=['GET', 'POST'])
 def handle_feature_request():
 
@@ -144,7 +149,7 @@ def handle_client_request():
         # this is for the client menu       
         else:
             for client in clients:
-                client_dict = {'name': client.name, 'description': client.description}
+                client_dict = {'name': client.name, 'homepage' : client.homepage, 'description': client.description}
                 json_list.append(client_dict)
         
         return jsonify(json_list)

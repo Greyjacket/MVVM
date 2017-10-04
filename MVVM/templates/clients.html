@@ -22,7 +22,8 @@
     	</div>
 	    <div class="client-display" data-bind="foreach: clientList">
 	      <div class="row">
-	        <div class="col-md-12"><span class="field-label">Name: </span><span data-bind="text: name"></span></div>
+	        <div class="col-md-12"><span class="field-label">Name: </span><span><a data-bind ="text: name, attr:{ href: '/MVVM/clients/' + name.toLowerCase().replace(' ', '') }"></a></span></div>
+	        <div class="col-md-12"><span class="field-label">Homepage: </span><a data-bind = "attr:{ href: homepage }"><span data-bind="text: homepage"></span></a></div>
 	      	<div class="col-md-12"><span class="field-label">Description: </span><span data-bind="text: description"></span></div>
 		  </div>
 		</div>

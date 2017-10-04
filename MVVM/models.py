@@ -25,7 +25,12 @@ class FeatureRequest(db.Model):
 class Client(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True)
+    webname = db.Column(db.String(80), unique=True)
+    avatar = db.Column(db.String(80), unique=True)
+    location = db.Column(db.String(80))
+    country = db.Column(db.String(80))
     description = db.Column(db.Text)
+    homepage = db.Column(db.Text)
     feature_requests = db.relationship('FeatureRequest', backref=db.backref('Client'))
 
     def __init__(self, name):

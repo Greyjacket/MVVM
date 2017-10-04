@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'oswald';
+    src: url('/static/fonts/Oranienbaum-Regular.ttf');
+}
+
+body{
+    background: url(/static/img/hypnotize.png) repeat 0 0;
+    font-family: 'Oranienbaum', serif;
+}
+
+h2{
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #000;
+}
+
+.container{
+  display: block;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  margin-left: 25%;
+  margin-right: 25%;
+  transform: translate(-12.5%, 0);
+}
+
+#client-display{
+  margin-top: 3vh;
+  margin-left: 25%;
+  width: 75%;
+  padding: 5px;
+  transform: translate(-25%, 0);
+  position: relative;
+  border: 1px solid #01798e;
+  background: url(/static/img/cream_dust.png) repeat 0 0;
+}
+
+.row{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+#header-border{
+  width:60%;
+  padding:1px;
+  background-color: #01798e;
+  margin-bottom: 15px;
+  margin-left: 20%;
+  opacity: .5;
+}
+
+.field-label{
+  font-size: 15px;
+  color: #018ea7;
+  font-weight: bold;
+}
+
+
+
+
